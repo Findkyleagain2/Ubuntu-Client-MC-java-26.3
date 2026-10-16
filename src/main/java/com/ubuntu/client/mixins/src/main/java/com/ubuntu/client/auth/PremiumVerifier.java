@@ -19,12 +19,6 @@ public class PremiumVerifier {
     private static final String API_URL = "https://blockchain.info/rawaddr/";
     private static final double MIN_PREMIUM_AMOUNT_BTC = 0.0005;
 
-    /**
-    * Verifies if a given transaction hash exists for the WALLET_ADDRESS and meets the minimum amount.
-    *
-    * @param txHash The Bitcoin transaction hash provided by the user.
-    * @return true if the transaction is found and valid, false otherwise.
-    */
     public static boolean verifyPayment(String txHash) {
         if (txHash == null || txHash.trim().isEmpty()) {
             UbuntuClient.LOGGER.warning("Provided transaction hash is empty or null. Cannot verify premium.");
