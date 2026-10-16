@@ -42,10 +42,6 @@ public class ModuleManager {
         UbuntuClient.LOGGER.info("Modules initialized: " + modules.size() + " free, " + premiumModules.size() + " premium.");
     }
 
-    /**
-    * Executes the onTick() method for all enabled modules.
-    * Free modules always tick if enabled. Premium modules only tick if enabled AND premium is active.
-    */
     public static void onTick() {
 
         for (Module module : modules) {
