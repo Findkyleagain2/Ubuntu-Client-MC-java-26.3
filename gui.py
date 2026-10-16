@@ -9,7 +9,6 @@ class UbuntuUI:
         self.root.configure(bg="#1a1a1a")
         self.root.geometry("300x400")
 
-        # Glowing Orange Style
         self.style_color = "#FF8C00"
 
         tk.Label(self.root, text="Ubuntu Client", fg=self.style_color, bg="#1a1a1a", font=("Arial", 16)).pack(pady=10)
