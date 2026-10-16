@@ -1,1 +1,0 @@
-accessible method net.minecraft.client.render.WorldRenderer drawBox (Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/util/math/Box;FFFF)V
