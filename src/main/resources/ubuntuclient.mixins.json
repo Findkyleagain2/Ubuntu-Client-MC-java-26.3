@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"package": "com.ubuntu.client.mixins",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"MixinClientPlayNetworkHandler"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
