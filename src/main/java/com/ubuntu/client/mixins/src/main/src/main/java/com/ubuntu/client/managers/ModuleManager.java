@@ -1,8 +1,8 @@
 package com.ubuntu.client.managers;
 
-import com.ubuntu.client.modules.*; // Free modules
-import com.ubuntu.client.premium.modules.*; // Premium modules
-import com.ubuntu.client.UbuntuClient; // For isPremium check
+import com.ubuntu.client.modules.*;
+import com.ubuntu.client.premium.modules.*;
+import com.ubuntu.client.UbuntuClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,30 +14,30 @@ public class ModuleManager {
     public static void init() {
         UbuntuClient.LOGGER.info("Initializing modules...");
 
-        // --- FREE FEATURES ---
-        modules.add(new Fly()); // Movement
-        modules.add(new KillAura()); // Combat
-        modules.add(new AimAssist()); // Combat Helper
-        modules.add(new AutoWalk()); // Utility
-        modules.add(new AutoMine()); // Utility
-        modules.add(new AutoCrystal()); // Combat
-        modules.add(new AutoTotem()); // Combat Protection
-        modules.add(new AutoRefill()); // Inventory Management
-        modules.add(new ESP()); // Visual
-        modules.add(new StorageESP()); // Visual
-        modules.add(new BaseFinder()); // Utility
 
-        // --- PREMIUM FEATURES ---
-        // These are examples, actual premium modules would be more complex and optimized
-        premiumModules.add(new Aimbot()); // Advanced Combat: Predictive, smooth, less detectable aim
-        premiumModules.add(new AutoAnchor()); // Advanced Combat: Instant charge and explode anchors
-        premiumModules.add(new DonutSmpAutoBuy()); // Exclusive Utility: Auto-buy specific items on DonutSMP
-        premiumModules.add(new PacketVelocity()); // Movement: Full packet-level velocity negation
-        premiumModules.add(new AntiBacktrack()); // Combat: Manipulates hitbox desync for evasion
-        premiumModules.add(new Phase()); // Movement: Allows phasing through blocks
-        premiumModules.add(new PredictiveProjectileAim()); // Combat: Calculates projectile trajectory
-        premiumModules.add(new PacketMine()); // Utility: Mines multiple blocks via packets
-        premiumModules.add(new IllegalStackFinder()); // Utility: Scans for illegal items in chunks
+        modules.add(new Fly());
+        modules.add(new KillAura());
+        modules.add(new AimAssist());
+        modules.add(new AutoWalk());
+        modules.add(new AutoMine());
+        modules.add(new AutoCrystal());
+        modules.add(new AutoTotem());
+        modules.add(new AutoRefill());
+        modules.add(new ESP());
+        modules.add(new StorageESP());
+        modules.add(new BaseFinder());
+
+
+
+        premiumModules.add(new Aimbot());
+        premiumModules.add(new AutoAnchor());
+        premiumModules.add(new DonutSmpAutoBuy());
+        premiumModules.add(new PacketVelocity());
+        premiumModules.add(new AntiBacktrack());
+        premiumModules.add(new Phase());
+        premiumModules.add(new PredictiveProjectileAim());
+        premiumModules.add(new PacketMine());
+        premiumModules.add(new IllegalStackFinder());
 
         UbuntuClient.LOGGER.info("Modules initialized: " + modules.size() + " free, " + premiumModules.size() + " premium.");
     }
@@ -47,14 +47,14 @@ public class ModuleManager {
     * Free modules always tick if enabled. Premium modules only tick if enabled AND premium is active.
     */
     public static void onTick() {
-        // Tick free modules
+
         for (Module module : modules) {
             if (module.isEnabled()) {
                 module.onTick();
             }
         }
 
-        // Tick premium modules only if premium is active
+
         if (UbuntuClient.isPremium) {
             for (PremiumModule module : premiumModules) {
                 if (module.isEnabled()) {

@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinClientPlayNetworkHandler {
     @Inject(method = "onEntityVelocityUpdate", at = @At("HEAD"), cancellable = true)
     private void onEntityVelocityUpdate(EntityVelocityUpdateS2CPacket packet, CallbackInfo ci) {
-        // Logic to negate velocity for Anti-Knockback
-        ci.cancel(); 
+
+        ci.cancel();
     }
 }

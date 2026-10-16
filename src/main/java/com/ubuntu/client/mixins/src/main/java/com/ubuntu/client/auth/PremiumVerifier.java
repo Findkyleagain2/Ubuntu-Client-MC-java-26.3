@@ -3,7 +3,7 @@ package com.ubuntu.client.auth;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.ubuntu.client.UbuntuClient; // For logging
+import com.ubuntu.client.UbuntuClient;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,11 +13,11 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 
 public class PremiumVerifier {
-    // YOUR BTC WALLET ADDRESS - Users will send payment here.
-    // This is a placeholder. Replace with your actual Bitcoin address.
+
+
     public static final String WALLET_ADDRESS = "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh";
     private static final String API_URL = "https://blockchain.info/rawaddr/";
-    private static final double MIN_PREMIUM_AMOUNT_BTC = 0.0005; // Example: 0.0005 BTC for premium
+    private static final double MIN_PREMIUM_AMOUNT_BTC = 0.0005;
 
     /**
     * Verifies if a given transaction hash exists for the WALLET_ADDRESS and meets the minimum amount.
@@ -32,12 +32,12 @@ public class PremiumVerifier {
         }
 
         HttpClient client = HttpClient.newBuilder()
-        .connectTimeout(Duration.ofSeconds(10)) // Set a connection timeout
+        .connectTimeout(Duration.ofSeconds(10))
         .build();
 
         HttpRequest request = HttpRequest.newBuilder()
         .uri(URI.create(API_URL + WALLET_ADDRESS))
-        .timeout(Duration.ofSeconds(15)) // Set a request timeout
+        .timeout(Duration.ofSeconds(15))
         .header("Accept", "application/json")
         .build();
 
@@ -62,7 +62,7 @@ public class PremiumVerifier {
                 String currentTxHash = tx.get("hash").getAsString();
 
                 if (currentTxHash.equalsIgnoreCase(txHash.trim())) {
-                    // Transaction found, now verify the amount
+
                     long totalReceivedSatoshis = 0;
                     JsonArray out = tx.getAsJsonArray("out");
                     if (out != null) {
@@ -75,7 +75,7 @@ public class PremiumVerifier {
                         }
                     }
 
-                    double receivedBtc = totalReceivedSatoshis / 100_000_000.0; // Convert satoshis to BTC
+                    double receivedBtc = totalReceivedSatoshis / 100_000_000.0;
 
                     if (receivedBtc >= MIN_PREMIUM_AMOUNT_BTC) {
                         UbuntuClient.LOGGER.info(String.format("Transaction %s found and amount %.8f BTC meets minimum %.8f BTC. Premium verified!", txHash, receivedBtc, MIN_PREMIUM_AMOUNT_BTC));

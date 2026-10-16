@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinClientPlayerEntity {
     @Inject(method = "sendMovementPackets", at = @At("HEAD"), cancellable = true)
     private void onSendMovementPackets(CallbackInfo ci) {
-        // Logic for Silent Aim/Rotation Spoofing goes here
+
     }
 }
